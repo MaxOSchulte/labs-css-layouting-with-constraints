@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+  grid-column: span var(--field-width);
+  grid-row: span var(--field-height);
+  border-radius: .2rem;
+  align-items: center;
+  padding: 1rem;
+}

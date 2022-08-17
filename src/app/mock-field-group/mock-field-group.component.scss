@@ -1,0 +1,9 @@
+:host {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(var(--field-width), 1fr);
+  grid-column: span var(--field-width);
+  grid-row: span var(--field-height);
+  gap: .5rem;
+  align-self: stretch;
+}

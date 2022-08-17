@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+.separator {
+  grid-column: 1 / -1 !important;
+}

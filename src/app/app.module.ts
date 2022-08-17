@@ -3,26 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainGroupComponent } from './main-group/main-group.component';
+import { GroupComponent } from './group/main-group/group.component';
 import { ColumnComponent } from './column/column.component';
 import { RowComponent } from './row/row.component';
-import { SeperatorComponent } from './seperator/seperator.component';
+import { SeparatorComponent } from './seperator/separator.component';
 import { HeaderComponent } from './header/header.component';
+import { MockFieldComponent } from './mock-field/mock-field.component';
+import { MockFieldGroupComponent } from './mock-field-group/mock-field-group.component';
+import { CellDirective } from './cell.directive';
+import { SeparatorDirective } from './separator.directive';
+import { TitleComponent } from './title/title.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainGroupComponent,
+    GroupComponent,
     ColumnComponent,
     RowComponent,
-    SeperatorComponent,
-    HeaderComponent
+    SeparatorComponent,
+    HeaderComponent,
+    MockFieldComponent,
+    MockFieldGroupComponent,
+    CellDirective,
+    SeparatorDirective,
+    TitleComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}

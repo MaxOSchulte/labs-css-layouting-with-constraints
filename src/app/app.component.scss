@@ -1,0 +1,29 @@
+.app-group {
+  display: flex;
+  flex: 1 1 0;
+  gap: .5rem;
+  max-width: 100vw;
+  flex-wrap: wrap;
+
+  align-items: stretch;
+
+}
+  .col-3 {
+    > * {
+      min-width: 10rem;
+      width: calc(33% - (2 * 0.5rem))
+    }
+  }
+
+.col-4 {
+  > * {
+    min-width: 10rem;
+    width: calc(25% - (3 * 0.5rem))
+  }
+}
+
+.inline-column {
+  display: flex;
+  flex-direction: column;
+  grid-gap: .5rem;
+}
