@@ -13,6 +13,9 @@ import { MockFieldGroupComponent } from './mock-field-group/mock-field-group.com
 import { CellDirective } from './cell.directive';
 import { SeparatorDirective } from './separator.directive';
 import { TitleComponent } from './title/title.component';
+import { GridLayoutingComponent } from './grid-layouting/grid-layouting.component';
+import { GridMultiColumnComponent } from './grid-multi-column/grid-multi-column.component';
+import { GridSubGroupsComponent } from './grid-sub-groups/grid-sub-groups.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { TitleComponent } from './title/title.component';
     CellDirective,
     SeparatorDirective,
     TitleComponent,
+    GridLayoutingComponent,
+    GridMultiColumnComponent,
+    GridSubGroupsComponent,
   ],
   imports: [
     BrowserModule,

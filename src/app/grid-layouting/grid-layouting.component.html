@@ -1,0 +1,48 @@
+<p>
+  Grid: 4 Rows, 16 Columns
+</p>
+<app-group [rows]="4" [columns]="16">
+  <app-mock-field>1</app-mock-field>
+  <app-mock-field>2</app-mock-field>
+  <app-mock-field-group>
+    <app-mock-field width="1">3</app-mock-field>
+    <app-mock-field width="3">4</app-mock-field>
+  </app-mock-field-group>
+  <div style="grid-column: span 4; text-align: center; margin: auto">"empty placeholder"</div>
+  <app-mock-field-group>
+  <app-mock-field width="2">5</app-mock-field>
+  <app-mock-field width="2">6</app-mock-field>
+  </app-mock-field-group>
+  <app-mock-field>7</app-mock-field>
+  <app-mock-field height="2">8</app-mock-field>
+  <app-mock-field height="3">9</app-mock-field>
+  <app-mock-field>10</app-mock-field>
+  <app-mock-field>11</app-mock-field>
+  <app-mock-field>12</app-mock-field>
+  <app-mock-field>13</app-mock-field>
+  <app-mock-field>14</app-mock-field>
+</app-group>
+
+<br>
+<br>
+
+<p>
+  Grid: 4 Rows, 12 Columns
+</p>
+<app-group [rows]="4" [columns]="12">
+  <app-mock-field>1</app-mock-field>
+  <app-mock-field>2</app-mock-field>
+  <app-mock-field-group>
+    <app-mock-field width="1">3</app-mock-field>
+    <app-mock-field width="3">4</app-mock-field>
+  </app-mock-field-group>
+  <div style="grid-column: span 4; text-align: center; margin: auto">"empty placeholder"</div>
+  <app-mock-field-group>
+    <app-mock-field width="2">5</app-mock-field>
+    <app-mock-field width="2">6</app-mock-field>
+  </app-mock-field-group>
+  <app-mock-field>7</app-mock-field>
+  <app-mock-field height="2">8</app-mock-field>
+  <app-mock-field height="3">9</app-mock-field>
+  <app-mock-field>10</app-mock-field>
+</app-group>
