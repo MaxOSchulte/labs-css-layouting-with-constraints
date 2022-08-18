@@ -2,7 +2,7 @@
   display: flex;
   background-color: lightgray;
   flex-grow: 1;
-  grid-column: span var(--field-width);
+  grid-column: span min(var(--field-group-columns, var(--max-field-width)), var(--field-width));
   grid-row: span var(--field-height);
   border-radius: .2rem;
   align-items: center;

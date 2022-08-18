@@ -1,8 +1,11 @@
 :host {
+  --columns-span:  min(var(--max-field-width), var(--field-width));
+  --field-group-columns: var(--fallback-sizing, var(--inline-group-columns, var(--field-width)));
+
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(var(--field-width), 1fr);
-  grid-column: span var(--field-width);
+  grid-template-columns: repeat(var(--field-group-columns), 1fr);
+  grid-column: span var(--columns-span);
   grid-row: span var(--field-height);
   gap: .5rem;
   align-self: stretch;

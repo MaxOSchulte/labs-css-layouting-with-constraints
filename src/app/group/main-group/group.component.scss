@@ -1,6 +1,8 @@
 :host {
   --column-breaks: 1;
   --use-columns: var(--main-columns);
+  --max-field-width: var(--use-columns);
+
 
   // breakpoints calculate to two rows, and break one under.
   // if 16 columns there are probably 3 rows, so we add another column group below (rows)
@@ -27,11 +29,13 @@
 
   @media (max-width: 600px) {
     --use-columns: var(--field-width, var(--m-columns));
+    --max-field-width: 4;
     --column-breaks: 2;
   }
 
   @media (max-width: 500px) {
     --use-columns: var(--field-width, var(--s-columns));
+    --max-field-width: 4;
     --column-breaks: 3;
     --extra-rows: 1;
   }
