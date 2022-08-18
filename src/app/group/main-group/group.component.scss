@@ -2,7 +2,16 @@
   --column-breaks: 1;
   --use-columns: var(--main-columns);
 
-  --calculated-rows: calc(var(--column-breaks) * var(--main-rows));
+  // breakpoints calculate to two rows, and break one under.
+  // if 16 columns there are probably 3 rows, so we add another column group below (rows)
+  // when breaking to 1 column only. Not needed when breaking to two columns since 4 / 2 = 2
+  // better compare with the calculated rows???
+  --extra-rows-grid-16: clamp(0, calc(var(--main-columns) - 12), 4);
+  --extra-rows: 0;
+
+  //                                  rows by breakpooint         +   // extra rows for 16 column
+  --calculated-rows: calc(var(--column-breaks) * var(--main-rows) + (var(--extra-rows) * var(--extra-rows-grid-16)));
+
 
   display: grid;
   grid-template-rows: repeat(var(--calculated-rows), 1fr);
@@ -24,5 +33,6 @@
   @media (max-width: 500px) {
     --use-columns: var(--field-width, var(--s-columns));
     --column-breaks: 3;
+    --extra-rows: 1;
   }
 }
