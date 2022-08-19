@@ -3,11 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { GroupComponent } from './group/main-group/group.component';
+import { GroupComponent } from './group/group.component';
 import { ColumnComponent } from './column/column.component';
-import { RowComponent } from './row/row.component';
-import { SeparatorComponent } from './seperator/separator.component';
-import { HeaderComponent } from './header/header.component';
 import { MockFieldComponent } from './mock-field/mock-field.component';
 import { MockFieldGroupComponent } from './mock-field-group/mock-field-group.component';
 import { CellDirective } from './cell.directive';
@@ -23,9 +20,6 @@ import { SubGroupComponent } from './sub-group/sub-group.component';
     AppComponent,
     GroupComponent,
     ColumnComponent,
-    RowComponent,
-    SeparatorComponent,
-    HeaderComponent,
     MockFieldComponent,
     MockFieldGroupComponent,
     CellDirective,
