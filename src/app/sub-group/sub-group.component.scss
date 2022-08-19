@@ -3,7 +3,7 @@
   grid-auto-flow: column;
   gap: .5rem;
 
-  --calculated-rows: calc(clamp(0, var(--column-breaks), 2)* var(--field-height));
+  --calculated-rows: calc(clamp(1, var(--column-breaks), 3)* var(--field-height));
   --use-rows: min(var(--cell-height-sum), var(--calculated-rows));
 
   grid-template-rows: repeat(var(--use-rows), 1fr);
