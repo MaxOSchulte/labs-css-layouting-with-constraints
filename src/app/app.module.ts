@@ -16,6 +16,7 @@ import { TitleComponent } from './title/title.component';
 import { GridLayoutingComponent } from './grid-layouting/grid-layouting.component';
 import { GridMultiColumnComponent } from './grid-multi-column/grid-multi-column.component';
 import { GridSubGroupsComponent } from './grid-sub-groups/grid-sub-groups.component';
+import { SubGroupComponent } from './sub-group/sub-group.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { GridSubGroupsComponent } from './grid-sub-groups/grid-sub-groups.compon
     GridLayoutingComponent,
     GridMultiColumnComponent,
     GridSubGroupsComponent,
+    SubGroupComponent,
   ],
   imports: [
     BrowserModule,
