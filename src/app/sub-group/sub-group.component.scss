@@ -11,7 +11,7 @@
   --sub-group-columns: min(var(--max-field-width, 16), var(--field-width));
   grid-template-columns: repeat(var(--sub-group-columns), 1fr);
 
-  grid-column: span var(--max-field-width, var(--field-width));
+  grid-column: span min(var(--max-field-width, 16), var(--field-width));
   grid-row: span min(var(--use-rows));
 
 
