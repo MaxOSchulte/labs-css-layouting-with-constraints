@@ -16,26 +16,22 @@ import { GridSubGroupsComponent } from './grid-sub-groups/grid-sub-groups.compon
 import { SubGroupComponent } from './sub-group/sub-group.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GroupComponent,
-    ColumnComponent,
-    MockFieldComponent,
-    MockFieldGroupComponent,
-    CellDirective,
-    SeparatorDirective,
-    TitleComponent,
-    GridLayoutingComponent,
-    GridMultiColumnComponent,
-    GridSubGroupsComponent,
-    SubGroupComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent],
+    declarations: [
+        AppComponent,
+        GroupComponent,
+        ColumnComponent,
+        MockFieldComponent,
+        MockFieldGroupComponent,
+        CellDirective,
+        SeparatorDirective,
+        TitleComponent,
+        GridLayoutingComponent,
+        GridMultiColumnComponent,
+        GridSubGroupsComponent,
+        SubGroupComponent,
+    ],
+    imports: [BrowserModule, AppRoutingModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

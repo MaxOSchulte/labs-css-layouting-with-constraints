@@ -1,8 +1,8 @@
 import { Directive, HostBinding } from '@angular/core';
 
 @Directive({
-  selector: '[appSeparator]'
+    selector: '[appSeparator]',
 })
 export class SeparatorDirective {
-  @HostBinding('class.separator') separator = true;
+    @HostBinding('class.separator') separator = true;
 }
