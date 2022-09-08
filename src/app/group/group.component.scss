@@ -1,16 +1,32 @@
 :host {
+    /*
+        Propagate down to inform about column breaks for M and S
+     */
     --column-breaks: 1;
+    --coloumn-breaks-medium: 2;
+    --coloumn-breaks-small: 3;
+    --subgroup-breaks: var(--column-breaks);
+    /*
+        Columns used for this Container / Grid columns.
+        Changed by breakpoints
+     */
     --use-columns: var(--main-columns);
+    /*
+        Propagate down to inform about max field width to limit containing fields/
+        Changed by Breakpoints.
+     */
     --max-field-width: var(--use-columns);
 
     // breakpoints calculate to two rows, and break one under.
     // if 16 columns there are probably 3 rows, so we add another column group below (rows)
     // when breaking to 1 column only. Not needed when breaking to two columns since 4 / 2 = 2
     // better compare with the calculated rows???
+    // greater 0 when columns > 12 therefore 16 (in steps)
     --extra-rows-grid-16: clamp(0, calc(var(--main-columns) - 12), 4);
+    // use extra rows as an if by breakpoint
     --extra-rows: 0;
 
-    //                                  rows by breakpoint         +   // extra rows for 16 column
+    // rows by breakpoint +  extra rows for 16 column
     --calculated-rows: calc(
         var(--column-breaks) * var(--main-rows) +
             (var(--extra-rows) * var(--extra-rows-grid-16))
@@ -19,29 +35,27 @@
     --use-rows: min(var(--cell-height), var(--calculated-rows));
 
     display: grid;
+    flex-grow: 1;
     grid-template-rows: repeat(var(--use-rows), 1fr);
     grid-template-columns: repeat(var(--use-columns), 1fr);
     grid-auto-flow: column;
     gap: 0.5rem;
     align-items: stretch;
 
-    flex-grow: 1;
-    grid-column: span var(--use-columns);
-    grid-row: span var(--use-rows);
-
     @media (max-width: 600px) {
         // M
         --use-columns: var(--field-width, var(--m-columns));
-        --max-field-width: 4;
-        --column-breaks: 3;
+        --column-breaks: var(--coloumn-breaks-medium);
+        --max-field-width: var(--field-width, 4);
+        // overreide subgroup break for 3 columns
+        --subgroup-breaks: var(--coloumn-breaks-small);
     }
 
     @media (max-width: 500px) {
         // S
         --use-columns: var(--field-width, var(--s-columns));
         --cell-height: var(--cell-height-sum);
-        --max-field-width: 4;
-        --column-breaks: 3;
+        --column-breaks: var(--coloumn-breaks-small);
         --extra-rows: 1;
     }
 }

@@ -3,19 +3,40 @@
     grid-auto-flow: column;
     gap: 0.5rem;
 
+    /*
+        Setup Rows.
+        Set the internal rows equally to the used rows in the container.
+
+        --calculate-rows: calculate how many rows should be used by definition.
+             Calculation is done by column-breaks given by the container and this sub-group
+             given height.
+        --use-rows: define which row definition should be used. Minimum is used: cell-height-sum
+            (defined by the component) and the calculated rows.
+            --cell-height-sum only works for single columns.
+     */
     --calculated-rows: calc(
-        clamp(1, var(--column-breaks), 3) * var(--field-height)
+        clamp(1, var(--subgroup-breaks), 3) * var(--sub-grid-height, var(--main-rows, var(--field-height)))
     );
     --use-rows: min(var(--cell-height-sum), var(--calculated-rows));
-
     grid-template-rows: repeat(var(--use-rows), 1fr);
-
-    --sub-group-columns: min(var(--max-field-width, 16), var(--field-width));
-    grid-template-columns: repeat(var(--sub-group-columns), 1fr);
-
-    grid-column: span min(var(--max-field-width, 16), var(--field-width));
     grid-row: span min(var(--use-rows));
 
+    /*
+        Setup Columns.
+        Set the "internal" columns equal to the columns.
+        By default use the given columns defined by the user.
+        Optionally override the columns with limiting max width,
+        e.g. breakpoints that narrow the container to a smaller size than the given columns.
+
+        --field-width is provided by host
+        --max-field-width is provided by container (16 is the global max)
+     */
+    --sub-group-columns: min(var(--max-field-width, 16), var(--field-width));
+    grid-template-columns: repeat(var(--sub-group-columns), 1fr);
+    grid-column: span var(--sub-group-columns);
+
+
+    // Improvement ???
     // breakpoints calculate to two rows, and break one under.
     // if 16 columns there are probably 3 rows, so we add another column group below (rows)
     // when breaking to 1 column only. Not needed when breaking to two columns since 4 / 2 = 2

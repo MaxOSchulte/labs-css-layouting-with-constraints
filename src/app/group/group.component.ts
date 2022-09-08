@@ -47,9 +47,6 @@ export class GroupComponent extends CellDirective implements AfterContentInit {
     filledCells?: QueryList<CellSelectorDirective>;
 
     ngAfterContentInit() {
-        this.filledCells?.forEach((cell) =>
-            console.log(cell.height, cell.cellHeightSum$$?.value)
-        );
         this.filledCells?.changes
             .pipe(
                 startWith(this.filledCells),
