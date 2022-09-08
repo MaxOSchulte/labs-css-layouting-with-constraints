@@ -11,7 +11,7 @@
   --extra-rows-grid-16: clamp(0, calc(var(--main-columns) - 12), 4);
   --extra-rows: 0;
 
-  //                                  rows by breakpooint         +   // extra rows for 16 column
+  //                                  rows by breakpoint         +   // extra rows for 16 column
   --calculated-rows: calc(var(--column-breaks) * var(--main-rows) + (var(--extra-rows) * var(--extra-rows-grid-16)));
   --cell-height: var(--cell-height-max, var(--calculated-rows));
   --use-rows: min(var(--cell-height), var(--calculated-rows));
@@ -29,13 +29,13 @@
   grid-row: span var(--use-rows);
 
 
-  @media (max-width: 600px) {
+  @media (max-width: 600px) { // M
     --use-columns: var(--field-width, var(--m-columns));
     --max-field-width: 4;
-    --column-breaks: 2;
+    --column-breaks: 3;
   }
 
-  @media (max-width: 500px) {
+  @media (max-width: 500px) { // S
     --use-columns: var(--field-width, var(--s-columns));
     --cell-height: var(--cell-height-sum);
     --max-field-width: 4;
