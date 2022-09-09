@@ -4,7 +4,7 @@ import {
     QueryList,
     ViewChildren,
 } from '@angular/core';
-import { CellSelectorDirective } from '../cell-selector.directive';
+import { CellSelectorDirective } from '../../cell-selector.directive';
 import { map, startWith } from 'rxjs';
 
 @Component({

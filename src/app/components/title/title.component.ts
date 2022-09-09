@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CellDirective } from '../cell.directive';
-import { CellSelectorDirective } from '../cell-selector.directive';
+import { CellDirective } from '../../cell.directive';
+import { CellSelectorDirective } from '../../cell-selector.directive';
 import { Title } from '@angular/platform-browser';
 
 @Component({

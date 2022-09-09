@@ -6,8 +6,8 @@ import {
     Input,
     QueryList,
 } from '@angular/core';
-import { CellDirective } from '../cell.directive';
-import { CellSelectorDirective } from '../cell-selector.directive';
+import { CellDirective } from '../../cell.directive';
+import { CellSelectorDirective } from '../../cell-selector.directive';
 import { filter, startWith } from 'rxjs';
 import { SubGroupComponent } from '../sub-group/sub-group.component';
 

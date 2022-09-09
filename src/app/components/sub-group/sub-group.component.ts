@@ -7,8 +7,8 @@ import {
     OnDestroy,
     QueryList,
 } from '@angular/core';
-import { CellDirective } from '../cell.directive';
-import { CellSelectorDirective } from '../cell-selector.directive';
+import { CellDirective } from '../../cell.directive';
+import { CellSelectorDirective } from '../../cell-selector.directive';
 import { BehaviorSubject, map, startWith, Subject, takeUntil } from 'rxjs';
 
 @Component({
