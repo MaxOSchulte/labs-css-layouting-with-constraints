@@ -1,10 +1,12 @@
 :host {
+    --default-field-max-width: 4;
     /*
         Propagate down to inform about column breaks for M and S
      */
-    --column-breaks: 1;
-    --coloumn-breaks-medium: 2;
-    --coloumn-breaks-small: 3;
+    --column-breaks-large: 1;
+    --column-breaks: var(--column-breaks-large);
+    --column-breaks-medium: 2;
+    --column-breaks-small: 3;
     --subgroup-breaks: var(--column-breaks);
     /*
         Columns used for this Container / Grid columns.
@@ -45,17 +47,17 @@
     @media (max-width: 600px) {
         // M
         --use-columns: var(--field-width, var(--m-columns));
-        --column-breaks: var(--coloumn-breaks-medium);
-        --max-field-width: var(--field-width, 4);
+        --column-breaks: var(--column-breaks-medium);
+        --max-field-width: var(--field-width, var(--default-field-max-width));
         // overreide subgroup break for 3 columns
-        --subgroup-breaks: var(--coloumn-breaks-small);
+        --subgroup-breaks: var(--column-breaks-small);
     }
 
     @media (max-width: 500px) {
         // S
         --use-columns: var(--field-width, var(--s-columns));
         --cell-height: var(--cell-height-sum);
-        --column-breaks: var(--coloumn-breaks-small);
+        --column-breaks: var(--column-breaks-small);
         --extra-rows: 1;
     }
 }

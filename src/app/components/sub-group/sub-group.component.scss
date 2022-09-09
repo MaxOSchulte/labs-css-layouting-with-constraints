@@ -15,7 +15,7 @@
             --cell-height-sum only works for single columns.
      */
     --calculated-rows: calc(
-        clamp(1, var(--subgroup-breaks), 3) * var(--sub-grid-height, var(--main-rows, var(--field-height)))
+        clamp(var(--column-breaks-large), var(--subgroup-breaks), var(--column-breaks-small)) * var(--sub-grid-height, var(--main-rows, var(--field-height)))
     );
     --use-rows: min(var(--cell-height-sum), var(--calculated-rows));
     grid-template-rows: repeat(var(--use-rows), 1fr);
