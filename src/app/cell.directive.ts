@@ -1,4 +1,5 @@
 import { Directive, HostBinding, Input } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Directive({
     selector: '[appMockField]',
@@ -10,4 +11,6 @@ export class CellDirective {
     @HostBinding('style.--field-height')
     @Input()
     height?: number | string = 1;
+
+    cellHeightSum$$?: BehaviorSubject<number | undefined>;
 }

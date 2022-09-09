@@ -1,6 +1,5 @@
 import { Component, HostBinding, Input } from '@angular/core';
 import { CellDirective } from '../../cell.directive';
-import { CellSelectorDirective } from '../../cell-selector.directive';
 
 @Component({
     selector: 'app-mock-field-group',
@@ -8,7 +7,7 @@ import { CellSelectorDirective } from '../../cell-selector.directive';
     styleUrls: ['./mock-field-group.component.scss'],
     providers: [
         {
-            provide: CellSelectorDirective,
+            provide: CellDirective,
             useExisting: MockFieldGroupComponent,
         },
     ],

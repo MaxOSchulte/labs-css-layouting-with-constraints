@@ -3,12 +3,12 @@ import {
     ChangeDetectionStrategy,
     Component,
     ContentChildren,
-    HostBinding, Input,
+    HostBinding,
+    Input,
     OnDestroy,
     QueryList,
 } from '@angular/core';
 import { CellDirective } from '../../cell.directive';
-import { CellSelectorDirective } from '../../cell-selector.directive';
 import { BehaviorSubject, map, startWith, Subject, takeUntil } from 'rxjs';
 
 @Component({
@@ -17,16 +17,16 @@ import { BehaviorSubject, map, startWith, Subject, takeUntil } from 'rxjs';
     styleUrls: ['./sub-group.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [
-        {provide: CellSelectorDirective, useExisting: SubGroupComponent},
+        {provide: CellDirective, useExisting: SubGroupComponent},
     ],
 })
 export class SubGroupComponent
     extends CellDirective
     implements AfterContentInit, OnDestroy {
-    @ContentChildren(CellSelectorDirective)
-    filledCells?: QueryList<CellSelectorDirective>;
+    @ContentChildren(CellDirective)
+    filledCells?: QueryList<CellDirective>;
 
-    cellHeightSum$$ = new BehaviorSubject<number | undefined>(9999);
+    override cellHeightSum$$ = new BehaviorSubject<number | undefined>(9999);
     private destroy$$ = new Subject<void>();
 
     @Input()
@@ -45,7 +45,7 @@ export class SubGroupComponent
                 map((change) => change.length),
                 startWith(this.filledCells),
             )
-            .subscribe((filledCells: QueryList<CellSelectorDirective>) => {
+            .subscribe((filledCells: QueryList<CellDirective>) => {
                 this.cellHeightSum$$.next(
                     filledCells?.reduce(
                         (sum, {height}) =>

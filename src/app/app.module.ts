@@ -4,11 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GroupComponent } from './components/group/group.component';
-import { ColumnComponent } from './column/column.component';
 import { MockFieldComponent } from './components/mock-field/mock-field.component';
 import { MockFieldGroupComponent } from './components/mock-field-group/mock-field-group.component';
 import { CellDirective } from './cell.directive';
-import { SeparatorDirective } from './separator.directive';
 import { TitleComponent } from './components/title/title.component';
 import { GridLayoutingComponent } from './pages/grid-layouting/grid-layouting.component';
 import { GridMultiColumnComponent } from './pages/grid-multi-column/grid-multi-column.component';
@@ -19,11 +17,9 @@ import { SubGroupComponent } from './components/sub-group/sub-group.component';
     declarations: [
         AppComponent,
         GroupComponent,
-        ColumnComponent,
         MockFieldComponent,
         MockFieldGroupComponent,
         CellDirective,
-        SeparatorDirective,
         TitleComponent,
         GridLayoutingComponent,
         GridMultiColumnComponent,
@@ -34,4 +30,5 @@ import { SubGroupComponent } from './components/sub-group/sub-group.component';
     providers: [],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

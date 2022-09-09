@@ -1,13 +1,5 @@
-import {
-    AfterContentInit,
-    Component,
-    ContentChildren,
-    HostBinding,
-    Input,
-    QueryList,
-} from '@angular/core';
+import { AfterContentInit, Component, ContentChildren, HostBinding, Input, QueryList } from '@angular/core';
 import { CellDirective } from '../../cell.directive';
-import { CellSelectorDirective } from '../../cell-selector.directive';
 import { filter, startWith } from 'rxjs';
 import { SubGroupComponent } from '../sub-group/sub-group.component';
 
@@ -43,27 +35,27 @@ export class GroupComponent extends CellDirective implements AfterContentInit {
     @HostBinding('style.--cell-height-max')
     private cellHeightMax?: number;
 
-    @ContentChildren(CellSelectorDirective)
-    filledCells?: QueryList<CellSelectorDirective>;
+    @ContentChildren(CellDirective)
+    filledCells?: QueryList<CellDirective>;
 
     ngAfterContentInit() {
         this.filledCells?.changes
             .pipe(
                 startWith(this.filledCells),
-                filter((cells: QueryList<CellSelectorDirective>) =>
-                    cells.some((cell) => cell instanceof SubGroupComponent)
-                )
+                filter((cells: QueryList<CellDirective>) =>
+                    cells.some((cell) => cell instanceof SubGroupComponent),
+                ),
             )
-            .subscribe((filledCells: QueryList<CellSelectorDirective>) => {
+            .subscribe((filledCells: QueryList<CellDirective>) => {
                 const heights = filledCells.map(
-                    ({ height, cellHeightSum$$ }) =>
+                    ({height, cellHeightSum$$}) =>
                         cellHeightSum$$?.value ??
-                        Number.parseInt((height ?? 1) + '', 10)
+                        Number.parseInt((height ?? 1) + '', 10),
                 );
 
                 this.cellHeightSum = heights.reduce(
                     (sum, height) => sum + height,
-                    0
+                    0,
                 );
                 this.cellHeightMax = Math.max(...heights);
             });
