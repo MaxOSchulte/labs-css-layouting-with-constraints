@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { CellDirective } from '../../cell.directive';
 import { BehaviorSubject, map, startWith, Subject, takeUntil } from 'rxjs';
+import { GroupComponent } from '../group/group.component';
 
 @Component({
     selector: 'app-sub-group',
@@ -29,9 +30,16 @@ export class SubGroupComponent
     override cellHeightSum$$ = new BehaviorSubject<number | undefined>(9999);
     private destroy$$ = new Subject<void>();
 
-    @Input()
+    constructor(private readonly group: GroupComponent) {
+        super();
+    }
+
     @HostBinding('style.--sub-grid-height')
-    override height?: number = undefined;
+    // @ts-ignore
+    override get height() {
+        console.log('get height from sub', this.group.rows + this.group.extraRows)
+        return this.group.rows + this.group.extraRows;
+    }
 
     @HostBinding('style.--cell-height-sum')
     get cellHeightSum(): number | undefined {
@@ -46,6 +54,15 @@ export class SubGroupComponent
                 startWith(this.filledCells),
             )
             .subscribe((filledCells: QueryList<CellDirective>) => {
+                const subGroupCells = this.height * (this.width / 4);
+                const occupiedsubgroupcells = filledCells.reduce((sum, cell) => sum + (cell.height * (cell.width/4)), 0);
+                console.log(filledCells.toArray())
+                console.log({subGroupCells, occupiedsubgroupcells})
+
+
+
+
+
                 this.cellHeightSum$$.next(
                     filledCells?.reduce(
                         (sum, {height}) =>
@@ -54,6 +71,9 @@ export class SubGroupComponent
                     ),
                 );
             });
+
+        console.log('subgroup dimen', this.width, this.height)
+        console.log('subgroup cells', Number.parseInt((this.width ?? 4) + '', 10) / 4 * Number.parseInt((this.height ?? 1) + '', 10) ?? 1)
     }
 
     ngOnDestroy() {

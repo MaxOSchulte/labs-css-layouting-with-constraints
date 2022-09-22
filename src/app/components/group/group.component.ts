@@ -3,31 +3,29 @@ import { CellDirective } from '../../cell.directive';
 import { filter, startWith } from 'rxjs';
 import { SubGroupComponent } from '../sub-group/sub-group.component';
 
+export type Columns = 4 | 8 | 12 | 16;
+
 @Component({
     selector: 'app-group',
     templateUrl: './group.component.html',
     styleUrls: ['./group.component.scss'],
 })
-export class GroupComponent extends CellDirective implements AfterContentInit {
+export class GroupComponent implements AfterContentInit {
     @HostBinding('style.--main-columns')
     @Input()
-    columns: 4 | 8 | 12 | 16 = 12;
+    columns: Columns = 12;
 
     @HostBinding('style.--main-rows')
     @Input()
-    rows = 4;
+    rows: number = 4;
 
     @HostBinding('style.--m-columns')
     @Input()
-    mColumns = 8;
+    mColumns: Columns = 8;
 
     @HostBinding('style.--s-columns')
     @Input()
-    sColumns = 4;
-
-    @HostBinding('style.--field-width')
-    @Input()
-    override width?: number | string = undefined;
+    sColumns: Columns = 4;
 
     @HostBinding('style.--cell-height-sum')
     cellHeightSum = 9999;
@@ -35,8 +33,14 @@ export class GroupComponent extends CellDirective implements AfterContentInit {
     @HostBinding('style.--cell-height-max')
     private cellHeightMax?: number;
 
+    @HostBinding('style.occupied-cells')
+    private occupiedCells: number = 0;
+
     @ContentChildren(CellDirective)
     filledCells?: QueryList<CellDirective>;
+
+    @HostBinding('style.--group-dynamic-extra-rows')
+    public extraRows: number = 0;
 
     ngAfterContentInit() {
         this.filledCells?.changes
@@ -57,6 +61,28 @@ export class GroupComponent extends CellDirective implements AfterContentInit {
                     (sum, height) => sum + height,
                     0,
                 );
+
+                console.log(this.filledCells?.toArray())
+                this.occupiedCells = filledCells.reduce((sum, {
+                    width,
+                    height,
+                }) => sum + (Number.parseInt((width ?? 4) + '', 10) / 4 * Number.parseInt((height ?? 1) + '', 10)), 0)
+                console.log(this.columns, this.rows)
+                const cells = (this.columns / 4) * this.rows;
+                const missingCells = this.occupiedCells - cells;
+                if (missingCells > 0) {
+                    console.log('missing cells', missingCells)
+                    let i = 0;
+                    while (i * (this.columns / 4) < missingCells) {
+                        i++;
+                        console.log('extra', i)
+                    }
+                    this.extraRows = i;
+                } else {
+                    this.extraRows = 0;
+                }
+                console.log({occupiedCells: this.occupiedCells, cells, heightSum: this.cellHeightSum, extraRows: this.extraRows})
+
                 this.cellHeightMax = Math.max(...heights);
             });
     }

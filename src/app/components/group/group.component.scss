@@ -29,16 +29,16 @@
     --extra-rows: 0;
 
     // rows by breakpoint +  extra rows for 16 column
-    --calculated-rows: calc(
+    --calaculated-main-rows: calc(
         var(--column-breaks) * var(--main-rows) +
             (var(--extra-rows) * var(--extra-rows-grid-16))
     );
-    --cell-height: var(--cell-height-max, var(--calculated-rows));
-    --use-rows: min(var(--cell-height), var(--calculated-rows));
+    --group-cell-height: var(--cell-height-max, var(--calaculated-main-rows));
+    --group-use-rows: calc(min(var(--group-cell-height), var(--calaculated-main-rows)) + var(--group-dynamic-extra-rows));
 
     display: grid;
     flex-grow: 1;
-    grid-template-rows: repeat(var(--use-rows), 1fr);
+    grid-template-rows: repeat(var(--group-use-rows), 1fr);
     grid-template-columns: repeat(var(--use-columns), 1fr);
     grid-auto-flow: column;
     gap: 0.5rem;
@@ -56,7 +56,7 @@
     @media (max-width: 500px) {
         // S
         --use-columns: var(--field-width, var(--s-columns));
-        --cell-height: var(--cell-height-sum);
+        --group-cell-height: var(--cell-height-sum);
         --column-breaks: var(--column-breaks-small);
         --extra-rows: 1;
     }
