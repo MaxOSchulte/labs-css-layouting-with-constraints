@@ -1,5 +1,13 @@
+@import "../../../mixin/breakpoints";
+
 :host {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(var(--group-rows), 1fr);
+  grid-template-columns: repeat(var(--group-columns), 1fr);
+
+  @include bp(xs) {
+    display: flex;
+    flex-direction: column;
+  }
 }

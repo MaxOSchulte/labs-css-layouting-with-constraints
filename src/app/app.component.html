@@ -1,28 +1,25 @@
 <router-outlet></router-outlet>
 
-
-<app-group>
-  <app-sub-group>
-    <app-item></app-item>
-    <app-item></app-item>
+<app-group columns="3" mColumns="2" sColumns="1">
+  <app-sub-group appCell width="2" columns="2" style="background-color: palegreen">
+    <div appCell width="2" style="border-bottom: 1px solid black; padding: .25rem 1rem">
+      TITLE
+    </div>
+    <app-item appCell>1</app-item>
+    <app-item appCell width="2">2</app-item>
+    <app-item appCell>3</app-item>
+    <app-item appCell>4</app-item>
+    <app-item appCell>5</app-item>
+    <app-item appCell>6</app-item>
+    <app-item appCell>7</app-item>
   </app-sub-group>
-  <app-sub-group style="flex: 2 2 0">
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-    <app-item></app-item>
-
+  <app-sub-group appCell width="1" style="background-color: paleturquoise">
+    <app-item appCell>1</app-item>
+    <app-item appCell>2</app-item>
+    <app-item appCell>3</app-item>
+    <app-item appCell>4</app-item>
+    <app-item appCell>5</app-item>
+    <app-item appCell>6</app-item>
+    <app-item appCell>7</app-item>
   </app-sub-group>
 </app-group>
-
-<hr>
-
-<app-group>
-  <app-item></app-item>
-  <app-item></app-item>
-  <div class="break-column"></div>
-  <app-item></app-item>
-  <app-item></app-item>
-  <app-item></app-item>
-</app-group>
-

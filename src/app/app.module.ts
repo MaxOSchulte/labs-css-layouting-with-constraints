@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { SubGroupComponent } from './components/sub-group/sub-group.component';
 import { ItemComponent } from './components/item/item.component';
 import { GroupComponent } from './components/group/group.component';
+import { FlexExampleComponent } from './flex-example/flex-example.component';
+import { CellDirective } from './directives/cell.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     SubGroupComponent,
     ItemComponent,
-    GroupComponent
+    GroupComponent,
+    FlexExampleComponent,
+    CellDirective
   ],
   imports: [
     BrowserModule,
