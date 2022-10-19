@@ -1,0 +1,9 @@
+:host {
+  border-bottom: solid 2px darkgray;
+  display: flex;
+  justify-items: center;
+  place-items: center;
+
+  grid-column: span min(var(--cell-width, 1), var(--use-sub-group-column));
+  grid-row: span var(--cell-height, 1);
+}

@@ -44,8 +44,10 @@ export class SubGroupComponent implements AfterContentInit {
     )
       .pipe(
         map(([parentColumns, cells]: [number, CellDirective[]]) => {
-          const occupiedGroupCells = cells.map((cell: CellDirective) => cell.cellHeight * cell.cellHWidth).reduce((a: number, b: number) => a + b, 0);
           const availableColumns = Math.min(this.gridColumns, parentColumns as number)
+
+          const occupiedGroupCells = cells.map((cell: CellDirective) => cell.cellHeight * Math.min(cell.cellHWidth, availableColumns)).reduce((a: number, b: number) => a + b, 0);
+          console.log(availableColumns, occupiedGroupCells)
           return Math.ceil(occupiedGroupCells / availableColumns);
         }),
       ).subscribe(requiredRows => this.requiredRows = requiredRows);

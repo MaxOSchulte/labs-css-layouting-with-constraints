@@ -4,6 +4,7 @@
   --group-columns: var(--group-l-columns);
   display: grid;
   grid-auto-flow: row;
+  gap: 1rem;
   grid-template-columns: repeat(var(--group-columns), 1fr);
 
   @include bp(m, s) {

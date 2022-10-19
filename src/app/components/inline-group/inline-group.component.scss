@@ -1,5 +1,15 @@
 :host {
-  --use-sub-group-column: var(--inline-group-columns);
+  grid-column: span min(var(--cell-width, 1), var(--use-sub-group-column));
+  grid-row: span var(--cell-height, 1);
+}
+
+div {
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(var(--inline-group-columns), 1fr);
+
+  --use-sub-group-column: var(--inline-group-columns);
+
+  grid-column: span min(var(--cell-width, 1), var(--use-sub-group-column));
+  grid-row: span var(--cell-height, 1);
 }

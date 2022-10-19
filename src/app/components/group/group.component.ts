@@ -22,7 +22,9 @@ export class GroupComponent {
         case ScreenSize.s:
           return Number.parseInt(this.mColumns + '');
           break;
-
+        case ScreenSize.xs:
+          return 1;
+          break;
       }
       return Number.parseInt(this.columns + '');
     }),

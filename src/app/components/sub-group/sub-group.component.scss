@@ -3,7 +3,7 @@
 :host {
   --use-sub-group-column: min(var(--sub-group-columns), var(--group-columns));
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
   flex: 1 1 0;
   grid-template-rows: repeat(var(--sub-group-rows), 1fr);
   grid-template-columns: repeat(var(--use-sub-group-column), 1fr);

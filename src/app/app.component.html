@@ -1,34 +1,87 @@
 <router-outlet></router-outlet>
 
+<app-group columns="4">
+  <app-sub-group columns="4">
+    <app-title width="4">Title</app-title>
+    <app-item>1</app-item>
+    <app-item>2</app-item>
+    <app-item>3</app-item>
+    <app-item>4</app-item>
+    <app-item>5</app-item>
+    <app-item>6</app-item>
+    <app-item>7</app-item>
+    <app-item>8</app-item>
+    <app-item>9</app-item>
+    <app-item>10</app-item>
+    <app-item>11</app-item>
+    <app-item>12</app-item>
+    <app-item>13</app-item>
+    <app-item>14</app-item>
+    <app-item>15</app-item>
+    <app-item>16</app-item>
+  </app-sub-group>
+</app-group>
+
+<hr>
+<hr>
+
+<app-group columns="3">
+  <app-sub-group columns="3">
+    <app-title width="4">Another Group</app-title>
+    <app-item>1</app-item>
+    <app-inline-title>Inline Title</app-inline-title>
+    <app-item>2</app-item>
+    <app-item>3</app-item>
+    <app-item>5</app-item>
+    <app-item>6</app-item>
+    <app-item>7</app-item>
+    <app-item>8</app-item>
+
+    <app-inline-group width="1" [columns]="4">
+      <app-item width="3">9 Inline</app-item>
+      <app-item width="1">10 Inline</app-item>
+    </app-inline-group>
+    <app-item>11</app-item>
+    <app-item>12</app-item>
+    <app-item>13</app-item>
+    <app-inline-title>Inline Title</app-inline-title>
+    <app-item>14</app-item>
+    <app-large-item height="3">15 Large Height 3</app-large-item>
+    <app-item>16</app-item>
+  </app-sub-group>
+</app-group>
+
+
+<hr>
+<hr>
+
 <app-group columns="4" mColumns="2" sColumns="1">
   <app-sub-group style="background-color: palegoldenrod">
-    <app-item appCell>1</app-item>
-    <app-item appCell>2</app-item>
-    <app-item appCell>3</app-item>
-    <app-item appCell>4</app-item>
+    <app-item>1</app-item>
+    <app-item>2</app-item>
+    <app-item>3</app-item>
+    <app-item>4</app-item>
   </app-sub-group>
   <app-sub-group columns="3" style="background-color: palegreen">
-    <app-item appCell width="2" height="2" >
-      <div style="border-bottom: 1px solid black; padding: .25rem 1rem; width: 100%">
-        TITLE
-      </div>
-    </app-item>
-    <app-inline-group appCell width="2" [columns]="3">
-      <app-item appCell width="1">Inline 1</app-item>
-      <app-item appCell width="2">Inline 2</app-item>
+    <app-title width="3">Some Main Title</app-title>
+    <app-inline-group width="2" [columns]="3">
+      <app-item width="1">Inline 1</app-item>
+      <app-item width="2">Inline 2</app-item>
     </app-inline-group>
-    <app-item appCell>1</app-item>
-    <app-item appCell width="2" height="3">2</app-item>
-    <app-item appCell>3</app-item>
-    <app-item appCell>4</app-item>
-    <app-item appCell>5</app-item>
-    <app-item appCell>6</app-item>
-    <app-item appCell>7</app-item>
-    <app-item appCell>8</app-item>
-    <app-item appCell>9</app-item>
-    <app-item appCell>10</app-item>
-    <app-item appCell>11</app-item>
-    <app-item appCell>12</app-item>
+    <app-item>1</app-item>
+    <app-large-item height="3">2</app-large-item>
+    <app-item>3</app-item>
+    <app-item>4</app-item>
+
+    <app-inline-title>Inline Title</app-inline-title>
+    <app-item>5</app-item>
+    <app-item>6</app-item>
+    <app-item>7</app-item>
+    <app-item>8</app-item>
+    <app-item>9</app-item>
+    <app-item>10</app-item>
+    <app-item>11</app-item>
+    <app-item>12</app-item>
   </app-sub-group>
 </app-group>
 
@@ -37,30 +90,30 @@
 
 <!--<app-group columns="4" mColumns="2" sColumns="1">-->
 <!--  <app-sub-group columns="2" style="background-color: palegoldenrod">-->
-<!--    <app-item appCell>1</app-item>-->
+<!--    <app-item>1</app-item>-->
 
-<!--    <div appCell>-->
+<!--    <div>-->
 <!--      TITLE Inline-->
 <!--    </div>-->
-<!--    <app-item appCell>2</app-item>-->
-<!--    <app-item appCell>3</app-item>-->
-<!--    <app-item appCell>4</app-item>-->
+<!--    <app-item>2</app-item>-->
+<!--    <app-item>3</app-item>-->
+<!--    <app-item>4</app-item>-->
 <!--  </app-sub-group>-->
-<!--  <app-sub-group appCell width="2" columns="2" style="background-color: palegreen">-->
-<!--    <div appCell width="2" style="border-bottom: 1px solid black; padding: .25rem 1rem">-->
+<!--  <app-sub-group width="2" columns="2" style="background-color: palegreen">-->
+<!--    <div width="2" style="border-bottom: 1px solid black; padding: .25rem 1rem">-->
 <!--      TITLE-->
 <!--    </div>-->
-<!--    <app-item appCell>1</app-item>-->
-<!--    <app-item appCell width="2" height="3">2</app-item>-->
-<!--    <app-item appCell>3</app-item>-->
-<!--    <app-item appCell>4</app-item>-->
-<!--    <app-item appCell>5</app-item>-->
-<!--    <app-item appCell>6</app-item>-->
-<!--    <app-item appCell>7</app-item>-->
-<!--    <app-item appCell>8</app-item>-->
-<!--    <app-item appCell>9</app-item>-->
-<!--    <app-item appCell>10</app-item>-->
-<!--    <app-item appCell>11</app-item>-->
-<!--    <app-item appCell>12</app-item>-->
+<!--    <app-item>1</app-item>-->
+<!--    <app-item width="2" height="3">2</app-item>-->
+<!--    <app-item>3</app-item>-->
+<!--    <app-item>4</app-item>-->
+<!--    <app-item>5</app-item>-->
+<!--    <app-item>6</app-item>-->
+<!--    <app-item>7</app-item>-->
+<!--    <app-item>8</app-item>-->
+<!--    <app-item>9</app-item>-->
+<!--    <app-item>10</app-item>-->
+<!--    <app-item>11</app-item>-->
+<!--    <app-item>12</app-item>-->
 <!--  </app-sub-group>-->
 <!--</app-group>-->

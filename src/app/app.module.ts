@@ -10,6 +10,11 @@ import { FlexExampleComponent } from './flex-example/flex-example.component';
 import { CellDirective } from './directives/cell.directive';
 import { InlineGroupComponent } from './components/inline-group/inline-group.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { TitleComponent } from './components/title/title.component';
+import { InlineTitleComponent } from './components/inline-title/inline-title.component';
+import { LargeItemComponent } from './components/large-item/large-item.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +24,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     GroupComponent,
     FlexExampleComponent,
     CellDirective,
-    InlineGroupComponent
+    InlineGroupComponent,
+    TitleComponent,
+    InlineTitleComponent,
+    LargeItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
