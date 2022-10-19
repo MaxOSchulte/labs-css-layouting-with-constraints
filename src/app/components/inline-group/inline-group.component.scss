@@ -1,0 +1,5 @@
+:host {
+  --use-sub-group-column: var(--inline-group-columns);
+  display: grid;
+  grid-template-columns: repeat(var(--inline-group-columns), 1fr);
+}

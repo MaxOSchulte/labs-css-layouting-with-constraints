@@ -8,6 +8,7 @@ import { ItemComponent } from './components/item/item.component';
 import { GroupComponent } from './components/group/group.component';
 import { FlexExampleComponent } from './flex-example/flex-example.component';
 import { CellDirective } from './directives/cell.directive';
+import { InlineGroupComponent } from './components/inline-group/inline-group.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CellDirective } from './directives/cell.directive';
     ItemComponent,
     GroupComponent,
     FlexExampleComponent,
-    CellDirective
+    CellDirective,
+    InlineGroupComponent
   ],
   imports: [
     BrowserModule,
