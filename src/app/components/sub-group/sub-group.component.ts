@@ -1,7 +1,7 @@
-import { AfterContentInit, Component, ContentChildren, HostBinding, Input, QueryList } from '@angular/core';
+import { Component, ContentChildren, HostBinding, Input, QueryList } from '@angular/core';
 import { GroupComponent } from '../group/group.component';
 import { CellDirective } from '../../directives/cell.directive';
-import { map, Observable, of, startWith } from 'rxjs';
+import { map, Observable, of, startWith, tap } from 'rxjs';
 
 @Component({
   selector: 'app-sub-group',
@@ -13,6 +13,7 @@ export class SubGroupComponent {
 
   @ContentChildren(CellDirective, {descendants: false})
   cells?: QueryList<CellDirective>;
+  private requiredRows?: number;
 
   constructor(private readonly group: GroupComponent) {
   }
@@ -21,31 +22,36 @@ export class SubGroupComponent {
     return this.cells?.changes.pipe(
       startWith(this.cells.toArray()),
       map((x: CellDirective[]) => {
-      const occupiedGroupCells = x.map((cell: CellDirective) => cell.cellHeight * cell.cellHWidth).reduce((a: number, b: number) => a + b, 0);
-      const groupCells = Math.ceil(occupiedGroupCells / Number.parseInt(this.columns + '', 0));
+        const occupiedGroupCells = x.map((cell: CellDirective) => cell.cellHeight * cell.cellHWidth).reduce((a: number, b: number) => a + b, 0);
+        const groupCells = Math.ceil(occupiedGroupCells / Number.parseInt(this.columns + '', 0));
 
 
-      console.log('[DEBUG] cells', x.length);
-      console.log('[DEBUG] occupied sum', occupiedGroupCells);
-      console.log('[DEBUG] group cells', groupCells);
-      console.log('[DEBUG] -------------------------------------------')
+        console.log('[DEBUG] cells', x.length);
+        console.log('[DEBUG] occupied sum', occupiedGroupCells);
+        console.log('[DEBUG] group cells', groupCells);
+        console.log('[DEBUG] -------------------------------------------')
 
-      return Math.ceil(occupiedGroupCells / Number.parseInt(this.columns + '', 0));
-    })) || of(0);
+        return Math.ceil(occupiedGroupCells / Number.parseInt(this.columns + '', 0));
+      }),
+      tap((requiredRows: number) => this.requiredRows = requiredRows)
+    ) || of(0);
   }
-
-
-
 
 
   @HostBinding('style.grid-row')
   private get gridRowSpan(): string {
+    if(this.group.inBreakpoint) {
+      return `span ${this.requiredRows}`
+    }
     return `span ${this.group.rows}`
   }
 
   @HostBinding('style.--subgrid-rows')
   private get gridRows(): number {
-    return this.group.groupRows;
+    if (this.group.inBreakpoint) {
+      return this.requiredRows || 1;
+    }
+      return this.group.groupRows;
   }
 
   @HostBinding('style.--subgrid-columns')

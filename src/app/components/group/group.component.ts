@@ -2,6 +2,8 @@ import { AfterViewInit, Component, ContentChildren, HostBinding, Input, QueryLis
 import { GroupService } from './group.service';
 import { SubGroupComponent } from '../sub-group/sub-group.component';
 import { combineLatest, map, startWith, switchMap } from 'rxjs';
+import { ScreenSizeService } from '../../utils/screen-size.service';
+import { ScreenSize } from '../../utils/screen-size';
 
 @Component({
   selector: 'app-group',
@@ -12,11 +14,24 @@ import { combineLatest, map, startWith, switchMap } from 'rxjs';
 export class GroupComponent implements AfterViewInit {
   @Input() rows?: number | string;
 
-  @Input() columns?: number | string;
+  @Input() columns?: number | string = 4;
   @Input() mColumns?: number | string = 2
-  @Input() sColumns?: number | string = 1;
 
   @ContentChildren(SubGroupComponent, {descendants: false}) subGroups?: QueryList<SubGroupComponent[]>;
+
+
+  private usedColumns = this.columns;
+
+  constructor(private readonly screenSizeService: ScreenSizeService) {
+    this.screenSizeService.active$.subscribe(screenSize => {
+      console.log(screenSize, screenSize === ScreenSize.s)
+      if (screenSize === ScreenSize.m || screenSize === ScreenSize.s) {
+        this.usedColumns = this.mColumns;
+      } else {
+        this.usedColumns = this.columns;
+      }
+    })
+  }
 
   @HostBinding('style.--group-rows')
   get groupRows(): number {
@@ -25,7 +40,11 @@ export class GroupComponent implements AfterViewInit {
 
   @HostBinding('style.--group-columns')
   get groupColumns(): number {
-    return Number.parseInt(this.columns + '', 10);
+    return Number.parseInt(this.usedColumns + '', 10);
+  }
+
+  get inBreakpoint(): boolean {
+    return this.usedColumns !== this.columns;
   }
 
   ngAfterViewInit() {
@@ -33,11 +52,33 @@ export class GroupComponent implements AfterViewInit {
       startWith(this.subGroups!.toArray()),
       map((subGroups: SubGroupComponent[]) => subGroups.map(group => group.getRequiredRows$())),
       switchMap(requiredRowsByGroup => combineLatest([...requiredRowsByGroup])),
-      map(heights => Math.max(...heights)),
     )
-      .subscribe(x => {
-        setTimeout(() => this.rows = x);
+      .subscribe(x => setTimeout(() => this.calculateRoes(x)));
+  }
 
-      });
+  calculateRoes(subGroupHeights: number[]): void {
+    if (this.inBreakpoint) {
+      switch (subGroupHeights.length) {
+        case 0:
+          this.rows = 0;
+          break;
+        case 1:
+          this.rows = subGroupHeights[0];
+          break;
+        case 2:
+          this.rows = Math.max(...subGroupHeights);
+          break;
+        case 3:
+          this.rows = Math.max(subGroupHeights[0], subGroupHeights[1]) + Math.max(subGroupHeights[1], subGroupHeights[2]);
+          break;
+        case 4:
+          this.rows = Math.max(subGroupHeights[0], subGroupHeights[1]) + Math.max(subGroupHeights[2] + subGroupHeights[3]);
+          break;
+      }
+      // this.rows = subGroupHeights.reduce((a,b) => a + b, 0);
+    } else {
+      this.rows = Math.max(...subGroupHeights);
+    }
+
   }
 }
