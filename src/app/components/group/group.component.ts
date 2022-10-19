@@ -12,7 +12,7 @@ import { ScreenSize } from '../../utils/screen-size';
   providers: [GroupService],
 })
 export class GroupComponent implements AfterViewInit {
-  @Input() rows?: number | string;
+  // @Input() rows?: number | string;
 
   @Input() columns?: number | string = 4;
   @Input() mColumns?: number | string = 2
@@ -33,10 +33,10 @@ export class GroupComponent implements AfterViewInit {
     })
   }
 
-  @HostBinding('style.--group-rows')
-  get groupRows(): number {
-    return Number.parseInt(this.rows + '', 10);
-  }
+  // @HostBinding('style.--group-rows')
+  // get groupRows(): number {
+  //   return Number.parseInt(this.rows + '', 10);
+  // }
 
   @HostBinding('style.--group-columns')
   get groupColumns(): number {
@@ -53,32 +53,33 @@ export class GroupComponent implements AfterViewInit {
       map((subGroups: SubGroupComponent[]) => subGroups.map(group => group.getRequiredRows$())),
       switchMap(requiredRowsByGroup => combineLatest([...requiredRowsByGroup])),
     )
-      .subscribe(x => setTimeout(() => this.calculateRoes(x)));
+      // .subscribe(x => setTimeout(() => this.calculateRoes(x)));
+    .subscribe(x => setTimeout(() => console.log('sub group rows')));
   }
 
-  calculateRoes(subGroupHeights: number[]): void {
-    if (this.inBreakpoint) {
-      switch (subGroupHeights.length) {
-        case 0:
-          this.rows = 0;
-          break;
-        case 1:
-          this.rows = subGroupHeights[0];
-          break;
-        case 2:
-          this.rows = Math.max(...subGroupHeights);
-          break;
-        case 3:
-          this.rows = Math.max(subGroupHeights[0], subGroupHeights[1]) + Math.max(subGroupHeights[1], subGroupHeights[2]);
-          break;
-        case 4:
-          this.rows = Math.max(subGroupHeights[0], subGroupHeights[1]) + Math.max(subGroupHeights[2] + subGroupHeights[3]);
-          break;
-      }
-      // this.rows = subGroupHeights.reduce((a,b) => a + b, 0);
-    } else {
-      this.rows = Math.max(...subGroupHeights);
-    }
-
-  }
+  // calculateRoes(subGroupHeights: number[]): void {
+  //   if (this.inBreakpoint) {
+  //     switch (subGroupHeights.length) {
+  //       case 0:
+  //         this.rows = 0;
+  //         break;
+  //       case 1:
+  //         this.rows = subGroupHeights[0];
+  //         break;
+  //       case 2:
+  //         this.rows = Math.max(...subGroupHeights);
+  //         break;
+  //       case 3:
+  //         this.rows = Math.max(subGroupHeights[0], subGroupHeights[1]) + Math.max(subGroupHeights[1], subGroupHeights[2]);
+  //         break;
+  //       case 4:
+  //         this.rows = Math.max(subGroupHeights[0], subGroupHeights[1]) + Math.max(subGroupHeights[2] + subGroupHeights[3]);
+  //         break;
+  //     }
+  //     // this.rows = subGroupHeights.reduce((a,b) => a + b, 0);
+  //   } else {
+  //     this.rows = Math.max(...subGroupHeights);
+  //   }
+  //
+  // }
 }

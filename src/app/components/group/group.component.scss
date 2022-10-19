@@ -2,7 +2,7 @@
 
 :host {
   display: grid;
-  grid-auto-flow: column;
+  grid-auto-flow: row;
   grid-template-rows: repeat(var(--group-rows), 1fr);
   grid-template-columns: repeat(var(--group-columns), 1fr);
 

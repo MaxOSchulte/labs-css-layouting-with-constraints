@@ -40,22 +40,22 @@ export class SubGroupComponent {
 
   @HostBinding('style.grid-row')
   private get gridRowSpan(): string {
-    if(this.group.inBreakpoint) {
       return `span ${this.requiredRows}`
-    }
-    return `span ${this.group.rows}`
   }
 
   @HostBinding('style.--subgrid-rows')
   private get gridRows(): number {
-    if (this.group.inBreakpoint) {
-      return this.requiredRows || 1;
-    }
-      return this.group.groupRows;
+    return this.requiredRows || 1;
   }
 
+  @HostBinding('style.--cell-width')
   @HostBinding('style.--subgrid-columns')
   private get gridColSpan(): number | string | undefined {
     return this.columns;
+  }
+
+  @HostBinding('style.grid-column')
+  private get colSpan(): string {
+    return `span ${this.columns}`
   }
 }
