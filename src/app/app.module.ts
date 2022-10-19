@@ -9,6 +9,7 @@ import { GroupComponent } from './components/group/group.component';
 import { FlexExampleComponent } from './flex-example/flex-example.component';
 import { CellDirective } from './directives/cell.directive';
 import { InlineGroupComponent } from './components/inline-group/inline-group.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { InlineGroupComponent } from './components/inline-group/inline-group.com
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
